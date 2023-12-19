@@ -22,13 +22,13 @@ jobs:
         with:
           creds: '{"clientId":"${{ secrets.ARM_CLIENT_ID }}","clientSecret":"${{ secrets.ARM_CLIENT_SECRET }}","subscriptionId":"${{ secrets.ARM_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.ARM_TENANT_ID }}"}'
 
-      - name: Create Azure storage account
-        uses: Azure/CLI@v1
-        with:
-          inlineScript:
-            az group create --name ${{ vars.BACKEND_AZURE_RESOURCE_GROUP_NAME }} --location ${{ vars.BACKEND_AZURE_LOCATION }}
-            az storage account create --name ${{ vars.BACKEND_AZURE_STORAGE_ACCOUNT }}  --resource-group ${{ vars.BACKEND_AZURE_RESOURCE_GROUP_NAME }} --location ${{ vars.BACKEND_AZURE_LOCATION }} --sku Standard_LRS
-            #az storage container create --name ${{ vars.BACKEND_AZURE_CONTAINER_NAME}} --account-name ${{ vars.BACKEND_AZURE_STORAGE_ACCOUNT}}
+      #- name: Create Azure storage account
+      #  uses: Azure/CLI@v1
+      #  with:
+      #    inlineScript:
+      #      az group create --name ${{ vars.BACKEND_AZURE_RESOURCE_GROUP_NAME }} --location ${{ vars.BACKEND_AZURE_LOCATION }}
+      #      az storage account create --name ${{ vars.BACKEND_AZURE_STORAGE_ACCOUNT }}  --resource-group ${{ vars.BACKEND_AZURE_RESOURCE_GROUP_NAME }} --location ${{ vars.BACKEND_AZURE_LOCATION }} --sku Standard_LRS
+      #      az storage container create --name ${{ vars.BACKEND_AZURE_CONTAINER_NAME}} --account-name ${{ vars.BACKEND_AZURE_STORAGE_ACCOUNT}}
 
   terraform-plan:
     name: 'Terraform Plan'
